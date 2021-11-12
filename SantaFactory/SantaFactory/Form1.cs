@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SantaFactory.Entities;
 
 namespace SantaFactory
 {
@@ -15,6 +16,7 @@ namespace SantaFactory
         public Form1()
         {
             InitializeComponent();
+          
         }
     }
 }
