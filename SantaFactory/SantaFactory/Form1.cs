@@ -27,8 +27,42 @@ namespace SantaFactory
             InitializeComponent();
             BallFactory = new BallFactory();
 
-            var b = BallFactory.CreateNew();
-            Controls.Add(b);
+            
         }
+
+        
+        private void CreateTimer_Tick(object sender, EventArgs e)
+        {
+            var ball = BallFactory.CreateNew();
+            _balls.Add(ball);
+            mainPanel.Controls.Add(ball);
+            ball.Left = -ball.Width;
+
+ 
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            var lastPosition = 0;
+           
+            foreach (var item in _balls)
+            {
+                item.MoveBall();
+                if (item.Left> lastPosition)
+                {
+                    lastPosition = item.Left;
+
+                }
+
+
+            }
+            if (lastPosition >= 1000)
+            {
+                var oldestBall = _balls[0];
+                _balls.Remove(oldestBall);
+                mainPanel.Controls.Remove(oldestBall);
+
+            }
+        }
+
     }
 }
