@@ -7,25 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SantaFactory.Abstrations;
 using SantaFactory.Entities;
 
 namespace SantaFactory
 {
     public partial class Form1 : Form
     {
-        List<Ball> _balls = new List<Ball>();
-        private BallFactory _ballFactory;
+        List<Toy> _toys = new List<Toy>();
+        private IToyFactory _toyFactory;
 
-        public BallFactory BallFactory
+        public IToyFactory ToyFactory
         {
-            get { return _ballFactory; }
-            set { _ballFactory = value; }
+            get { return _toyFactory; }
+            set { _toyFactory = value; }
         }
 
         public Form1()
         {
             InitializeComponent();
-            BallFactory = new BallFactory();
+            ToyFactory = new IToyFactory();
 
             
         }
@@ -33,10 +34,10 @@ namespace SantaFactory
         
         private void CreateTimer_Tick(object sender, EventArgs e)
         {
-            var ball = BallFactory.CreateNew();
-            _balls.Add(ball);
-            mainPanel.Controls.Add(ball);
-            ball.Left = -ball.Width;
+            Ball  toy = (Ball)ToyFactory.CreateNew();
+            _toys.Add(toy);
+            mainPanel.Controls.Add(toy);
+            toy.Left = -toy.Width;
 
  
         }
@@ -44,7 +45,7 @@ namespace SantaFactory
         {
             var lastPosition = 0;
            
-            foreach (var item in _balls)
+            foreach (var item in _toys)
             {
                 item.MoveToy();
                 if (item.Left> lastPosition)
@@ -57,9 +58,9 @@ namespace SantaFactory
             }
             if (lastPosition >= 1000)
             {
-                var oldestBall = _balls[0];
-                _balls.Remove(oldestBall);
-                mainPanel.Controls.Remove(oldestBall);
+                var oldesToy = _toys[0];
+                _toys.Remove(oldesToy);
+                mainPanel.Controls.Remove(oldesToy);
 
             }
         }

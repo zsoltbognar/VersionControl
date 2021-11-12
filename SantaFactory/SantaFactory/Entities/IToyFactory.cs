@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SantaFactory.Abstractions;
+using SantaFactory.Abstrations;
 
 namespace SantaFactory.Entities
 {
-    public class BallFactory
+    public class IToyFactory: Abstractions.IToyFactory
     {
-        public Ball CreateNew()
+        public Toy CreateNew()
         {
-            
             return new Ball();
         }
+
+        
     }
 }
