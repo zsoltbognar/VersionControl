@@ -34,5 +34,10 @@ namespace SantaFactory.Entities
                 Width,
                 Height);
         }
+
+        public void MoveBall()
+        {
+            Left++;
+        }
     }
 }
