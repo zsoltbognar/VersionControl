@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SantaFactory.Abstrations;
 
 namespace SantaFactory.Entities
 {
-    public class BallFactory
+    public class Car : Toy
     {
-        public Ball CreateNew()
+        protected override void DrawImage(Graphics g)
         {
-            
-            return new Ball();
+            throw new NotImplementedException();
         }
     }
 }

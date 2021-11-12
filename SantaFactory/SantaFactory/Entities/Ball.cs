@@ -5,39 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SantaFactory.Abstrations;
 
 namespace SantaFactory.Entities
 {
-    public class Ball : Label
+    public class Ball : Toy
     {
-        public Ball()
-        {
-            AutoSize = false;
-            Width = 50;
-            Height = Width;
-            Paint += Ball_Paint;
+        
 
-        }
+       
 
-        private void Ball_Paint(object sender, PaintEventArgs e)
+        protected override void DrawImage(Graphics g)
         {
-            DrawImage(e.Graphics);
-        }
-
-        private void DrawImage(Graphics g)
-        {
-            Brush ecset = new SolidBrush(Color.Aquamarine); 
+           
             g.FillEllipse(
-                ecset,
+                new SolidBrush(Color.Aquamarine),
                 0,
                 0,
                 Width,
                 Height);
         }
 
-        public void MoveBall()
-        {
-            Left++;
-        }
+       
     }
 }
